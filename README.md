@@ -160,9 +160,14 @@ powershell -ExecutionPolicy Bypass -File .\install_service.ps1 -Uninstall  # rem
 
 - **WhatsApp delivery window.** The Twilio *sandbox* only delivers inside a
   rolling 24-hour window and needs a re-join after inactivity — unusable for
-  unsolicited alerts that may fire days apart. For genuine 24x7 alerting you
-  must move to a **Twilio WhatsApp Business sender with an approved Content
-  template** (set `TWILIO_CONTENT_SID`). Templates deliver any time.
+  unsolicited alerts that may fire days apart. For genuine 24x7 alerting on
+  WhatsApp you'd move to a **Twilio WhatsApp Business sender with an approved
+  Content template** (set `TWILIO_CONTENT_SID`). Templates deliver any time.
+  **Don't want to pay for that? You don't have to** — set `NOTIFY_MODE` to
+  `telegram_only` (or `telegram_first`) and **Telegram is always free and
+  unlimited**. You won't get the WhatsApp message, but you'll *reliably* get the
+  alert (with images) on your Telegram bot. Telegram is the dependable always-on
+  channel; WhatsApp is the nice-to-have.
 - **Keep the host awake & powered.** The supervisor requests keep-awake, but
   also disable sleep/hibernate in Windows power settings and put the machine on
   reliable power/network. A small always-on box (mini PC, Raspberry Pi, or a
@@ -255,6 +260,11 @@ If Telegram isn't configured, behaviour is unchanged (WhatsApp only). When
 WhatsApp fails and no fallback is set, the failure is now **logged loudly**
 instead of being swallowed silently. Tip: `telegram_only` (or `telegram_first`)
 also lets you drop the tunnel entirely, since Telegram attaches images directly.
+
+> **No budget for a paid WhatsApp sender? No problem.** Telegram is free,
+> unlimited, and needs no business account or approved templates. Run with
+> `NOTIFY_MODE=telegram_only` and you'll always get the alert (with images) on
+> your Telegram bot — WhatsApp simply becomes an optional extra when you have it.
 
 ## Attaching frame images to WhatsApp
 
