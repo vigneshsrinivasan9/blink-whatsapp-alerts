@@ -1,0 +1,21 @@
+# Build context excludes — keep the image small and avoid leaking local state.
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.git/
+.gitignore
+
+# Local-only / secrets / large binaries (mounted or rebuilt, not baked in)
+.env
+blink_creds.json
+frames/
+bin/
+README.md
+DEPLOYMENT.md
+
+# Windows-only launchers (not used in the container)
+run_all.py
+supervisor.py
+install_service.ps1

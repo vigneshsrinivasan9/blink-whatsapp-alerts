@@ -1,0 +1,7 @@
+# Dependencies for container/Linux deployment.
+# blinkpy is installed from the vendored wheel (a patched fork that handles the
+# HTTP 202 2FA flow) — see vendor/. ffmpeg comes from the system package, so
+# imageio-ffmpeg is optional here.
+twilio>=9.0.0
+python-dotenv>=1.0.0
+aiohttp>=3.9.0

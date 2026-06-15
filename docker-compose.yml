@@ -1,0 +1,25 @@
+services:
+  blink-monitor:
+    build: .
+    image: blink-monitor
+    container_name: blink-monitor
+    restart: unless-stopped           # survives reboots & crashes
+    env_file:
+      - .env                          # all credentials/config
+    environment:
+      # Inside the container there is no cloudflared tunnel; Telegram uploads
+      # images directly. Override to whatsapp_first/both only if you also expose
+      # a public media URL reachable from Twilio.
+      NOTIFY_MODE: telegram_only
+    volumes:
+      # Persist the cached Blink session (so 2FA isn't needed on every restart)
+      # and the captured frames. Do the one-time 2FA login on a desktop first,
+      # then copy blink_creds.json next to this file before starting.
+      - ./blink_creds.json:/data/blink_creds.json
+      - ./frames:/data/frames
+    # Optional: keep logs bounded so they don't fill the disk over months.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

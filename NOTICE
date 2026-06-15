@@ -1,0 +1,36 @@
+This project bundles and depends on third-party software.
+
+------------------------------------------------------------------------------
+blinkpy
+------------------------------------------------------------------------------
+A patched build of blinkpy (an unofficial Python library for Blink cameras) is
+vendored in `vendor/` to handle Blink's current 2FA (HTTP 202) login flow.
+
+blinkpy is licensed under the MIT License:
+
+    MIT License
+    Copyright (c) 2017 Kevin Fronczak
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+Upstream project: https://github.com/fronzbot/blinkpy
+
+------------------------------------------------------------------------------
+Other dependencies
+------------------------------------------------------------------------------
+- twilio (MIT)
+- python-dotenv (BSD-3-Clause)
+- aiohttp (Apache-2.0)
+- imageio-ffmpeg (BSD-2-Clause) — optional; bundles ffmpeg binaries (LGPL/GPL)
+
+See each project's repository for full license text.

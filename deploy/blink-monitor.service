@@ -1,0 +1,32 @@
+# systemd service for the Blink -> WhatsApp/Telegram monitor (non-Docker Linux:
+# Raspberry Pi, cloud VM, etc.). Runs 24/7, restarts on crash, starts at boot.
+#
+# Install:
+#   sudo cp deploy/blink-monitor.service /etc/systemd/system/
+#   # edit the paths/User below to match your setup, then:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now blink-monitor
+#   journalctl -u blink-monitor -f      # live logs
+[Unit]
+Description=Blink motion -> WhatsApp/Telegram alert monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# --- EDIT THESE to match your install ---
+User=pi
+WorkingDirectory=/home/pi/blink-whatsapp
+ExecStart=/home/pi/blink-whatsapp/.venv/bin/python main.py
+# ----------------------------------------
+EnvironmentFile=/home/pi/blink-whatsapp/.env
+# Telegram uploads images directly, so no tunnel is needed on a headless box.
+Environment=NOTIFY_MODE=telegram_only
+Restart=always
+RestartSec=10
+# Don't spin forever on a hard failure: allow many restarts, then back off.
+StartLimitIntervalSec=300
+StartLimitBurst=20
+
+[Install]
+WantedBy=multi-user.target

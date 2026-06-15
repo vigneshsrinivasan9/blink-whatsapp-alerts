@@ -1,0 +1,37 @@
+# ---- Secrets & credentials (NEVER commit) ----
+.env
+.env.*
+!.env.example
+blink_creds.json
+*_creds.json
+*.pem
+*.key
+
+# ---- Captured camera frames / media ----
+frames/
+*.mp4
+*.jpg
+*.jpeg
+*.png
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# ---- Vendored wheels are intentionally tracked; keep them. ----
+!vendor/*.whl
+
+# ---- Large binaries (downloaded at setup, not committed) ----
+bin/
+
+# ---- OS / editor cruft ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
