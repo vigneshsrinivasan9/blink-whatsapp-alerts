@@ -311,7 +311,7 @@ text message (only delivers inside the 24h window / sandbox).
 ## Project layout
 
 ```
-blink-whatsapp/
+vigilai/
 ├── main.py                 # entry point: runs the monitor
 ├── run_all.py              # launcher: auto cloudflared tunnel + monitor
 ├── supervisor.py           # 24x7 supervisor: restarts on crash, keeps awake
