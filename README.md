@@ -146,18 +146,6 @@ and keeps the machine awake so it doesn't sleep and miss motion:
 python supervisor.py
 ```
 
-> **If you get `ModuleNotFoundError: No module named 'dotenv'`** your shell's
-> `python` is the wrong interpreter (often the Microsoft Store stub, or an
-> elevated session that can't see your per-user Python). Run it with the **full
-> path** to the Python that has the dependencies installed, e.g.:
->
-> ```powershell
-> & "$env:LOCALAPPDATA\Programs\Python\Python313\python.exe" supervisor.py
-> ```
->
-> Find the right one with `(Get-Command python).Source`, or
-> `python -c "import sys; print(sys.executable)"` in a shell where imports work.
-
 To make it start at every boot and survive logoffs/reboots, install it as a
 Windows Scheduled Task (run from an **elevated** PowerShell):
 
