@@ -1,9 +1,22 @@
-# Blink → WhatsApp / Telegram Motion Alerts
+# VigilAI — AI-Narrated Home Security Alerts
 
-Watches your [Blink](https://blinkforhome.com/) cameras and, on every motion
-event, sends a **WhatsApp and/or Telegram** message with an **AI-generated
+> **Blink cameras + computer vision → a plain-English alert on your phone.**
+
+VigilAI watches your [Blink](https://blinkforhome.com/) cameras and, on every
+motion event, sends a **WhatsApp and/or Telegram** message with an **AI-generated
 description of the activity** (e.g. *"A person is entering the house through the
-front door."*) and the captured camera frames.
+front door."*) and the captured camera frames — so a glance at your notifications
+tells you *what* happened, not just *that* something moved.
+
+## Motivation
+
+In Andrej Karpathy's ["Skill Issue" podcast appearance](https://youtu.be/kwSVtQ7dziU?t=648),
+he describes wiring up **AI to monitor his home security cameras** and alert him —
+effectively letting a model "watch" the feeds and tell him what's going on. That
+idea is the spark for this project: instead of generic "motion detected" pings (or
+scrubbing through clips yourself), a vision model watches the footage and narrates
+it in human language. VigilAI is a small, self-hostable take on that concept built
+on consumer Blink cameras and free/low-cost APIs.
 
 ## Architecture
 
